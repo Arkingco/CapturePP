@@ -1,0 +1,4 @@
+﻿개발에 있어서 참고, 유용했던 사이트들
+
+	[C#/API] Gloobal Hotkey(핫키) 등록하기 (RegisterHotKey, UnregisterHotKey)
+	https://gent.tistory.com/98
