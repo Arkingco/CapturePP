@@ -61,7 +61,6 @@ namespace Capture
             this.Name = "Form1";
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.Form1_Load);
-            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.getKetEvent);
             this.Resize += new System.EventHandler(this.NotifyTest_Resize);
             this.ResumeLayout(false);
             this.PerformLayout();

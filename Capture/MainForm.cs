@@ -20,18 +20,7 @@ namespace Capture
         public static extern bool UnregisterHotKey(IntPtr hWnd, int id);
 
         const int HOTKEY_ID = 31197; //Any number to use to identify the hotkey instance
-
-        private void NotifyTest_Resize(object sender, EventArgs e)
-        {
-            // 윈도우 상태가 Minimized일 경우
-            if (this.WindowState == FormWindowState.Minimized)
-            {
-                this.Visible = false;
-                this.ShowIcon = false;
-
-                notifyIcon1.Visible = true;
-            }
-        }
+        const int WM_HOTKEY = 0x0312;
 
         private void Form1_Load(object sender, EventArgs e)
         {
@@ -42,23 +31,8 @@ namespace Capture
             //핫키 해제
             UnregisterHotKey(this.Handle, HOTKEY_ID);
         }
-        private void getKetEvent(object sender, KeyEventArgs e)
-        {
 
-            if (e.Control) // Ctrl-S Save
-            {
-                label1.Text = e.KeyCode.ToString();
-            }
-
-        }
-
-        private void mainNotifyIcon_MouseClick(object sender, MouseEventArgs e)
-        {
-            // Notify Icon을 클릭했을 시 일어나는 이벤트.
-            this.Visible = true;
-            this.ShowIcon = true;
-            notifyIcon1.Visible = false;
-        }                   
+        // 핫키 설정 UnregisterHotKey(this.Handle, HOTKEY_ID);
 
 
         public enum KeyModifiers
@@ -70,7 +44,15 @@ namespace Capture
             Windows = 8
         }
 
-        const int WM_HOTKEY = 0x0312;
+ 
+
+        private void mainNotifyIcon_MouseClick(object sender, MouseEventArgs e)
+        {
+            // Notify Icon을 클릭했을 시 일어나는 이벤트.
+            this.Visible = true;
+            this.ShowIcon = true;
+            notifyIcon1.Visible = false;
+        }
         protected override void WndProc(ref Message message)
         {
             switch (message.Msg)
@@ -90,14 +72,24 @@ namespace Capture
             base.WndProc(ref message);
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void NotifyTest_Resize(object sender, EventArgs e)
         {
-            // 핫키 등록dwadwad
-            UnregisterHotKey(this.Handle, HOTKEY_ID);
+            // 윈도우 상태가 Minimized일 경우
+            if (this.WindowState == FormWindowState.Minimized)
+            {
+                this.Visible = false;
+                this.ShowIcon = false;
+
+                notifyIcon1.Visible = true;
+            }
+        }
+
+     
+
         }
 
       
-    }
+}
 
 
 
