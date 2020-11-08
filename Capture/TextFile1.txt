@@ -1,0 +1,4 @@
+﻿사이트 만들 때 사용한 유용한 정보들
+	
+	1. 화면 캡처
+	https://kdsoft-zeros.tistory.com/185
